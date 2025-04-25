@@ -38,6 +38,7 @@
             },
             "visible": true,
             "shape": "actor",
+            "zIndex": 2,
             "ports": {
               "groups": {
                 "top": {
@@ -121,7 +122,6 @@
               ]
             },
             "id": "322e59cb-5331-4005-9b9c-934d5f3de401",
-            "zIndex": 2,
             "data": {
               "type": "tm.Actor",
               "name": "Trein-Wifi/Netwerk",
@@ -145,13 +145,6 @@
                   "score": ""
                 }
               ]
-            },
-            "tools": {
-              "items": [
-                "boundary",
-                "button-remove"
-              ],
-              "name": null
             }
           },
           {
@@ -175,6 +168,7 @@
             },
             "visible": true,
             "shape": "actor",
+            "zIndex": 4,
             "ports": {
               "groups": {
                 "top": {
@@ -258,7 +252,6 @@
               ]
             },
             "id": "68cf1ff5-3508-4b36-9ea0-0f4d3946d811",
-            "zIndex": 4,
             "data": {
               "type": "tm.Actor",
               "name": "Werknemer (op trein)",
@@ -269,34 +262,34 @@
               "providesAuthentication": false,
               "threats": [
                 {
-                  "id": "5b1db771-8c3a-428e-a5cc-9a0844d0efb8",
-                  "title": "Spoofing",
+                  "id": "cff499c2-eac7-48ad-88b9-4d3af31ae621",
+                  "title": "Aanvaller stelt nep-netwerk beschikbaar",
                   "status": "Open",
                   "severity": "TBD",
                   "type": "Spoofing",
-                  "description": "Iemand doet zich voor als werknemer via onbeveiligd wifi",
+                  "description": "Aanvaller stelt nep-netwerk beschikbaar → werknemer verbindt per ongeluk",
                   "mitigation": "Provide remediation for this threat or a reason if status is N/A",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 1,
-                  "score": ""
+                  "number": 7,
+                  "score": "dd"
                 },
                 {
-                  "id": "370921ca-dfbe-424c-8f3e-6cb88c30072e",
-                  "title": "New STRIDE threat",
+                  "id": "36f2d49a-c878-451f-b2ba-4bbc8484840c",
+                  "title": "DNS-verkeer wordt omgeleid naar valse server",
                   "status": "Open",
                   "severity": "TBD",
-                  "type": "Repudiation",
-                  "description": "Provide a description for this threat",
-                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "type": "Spoofing",
+                  "description": "DNS-verkeer wordt omgeleid naar valse server",
+                  "mitigation": "",
                   "modelType": "STRIDE",
-                  "new": true,
-                  "number": 2,
+                  "new": false,
+                  "number": 8,
                   "score": ""
                 }
               ],
               "threatFrequency": {
-                "spoofing": 1,
+                "spoofing": 3,
                 "repudiation": 0
               }
             }
@@ -315,13 +308,14 @@
                 "text": "MailServer (bv. Outlook/Exchange)"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
             "visible": true,
             "shape": "actor",
+            "zIndex": 5,
             "ports": {
               "groups": {
                 "top": {
@@ -411,11 +405,41 @@
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "providesAuthentication": false,
-              "threats": []
-            },
-            "zIndex": 5
+              "threats": [
+                {
+                  "id": "cff3dcbc-236b-4882-a72a-f8fc4c19a19b",
+                  "title": "Verstuurde e-mails worden niet gelogd",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Repudiation",
+                  "description": "Verstuurde e-mails worden niet gelogd → geen bewijs van verzending\n\n",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 9,
+                  "score": ""
+                },
+                {
+                  "id": "bbad0ae0-b7b2-459f-bbe0-cc787c616700",
+                  "title": "Interne spoofing via e-mail",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Spoofing",
+                  "description": "Aanvaller stuurt mail uit naam van werknemer (social engineering)",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 10,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 1,
+                "repudiation": 1
+              }
+            }
           },
           {
             "position": {
@@ -431,13 +455,14 @@
                 "text": "AuthenticatieProces"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 6,
             "ports": {
               "groups": {
                 "top": {
@@ -521,19 +546,40 @@
               ]
             },
             "id": "7be0a234-d287-41de-a53e-09c941b324e0",
-            "zIndex": 6,
             "data": {
               "type": "tm.Process",
               "name": "AuthenticatieProces",
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "e07afd95-bf4e-4ff3-9abf-5b7c48341cdf",
+                  "title": "Aanvaller als werknemer",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Spoofing",
+                  "description": " Een aanvaller probeert zich voor te doen als een werknemer bij het loginproces.",
+                  "mitigation": "Sterke authenticatie zoals MFA, IP-checks",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 17,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 1,
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 0
+              }
             },
             "children": []
           },
@@ -580,8 +626,26 @@
                   "new": true,
                   "number": 3,
                   "score": ""
+                },
+                {
+                  "id": "29e6ae74-99d5-436f-aac2-3311bff54d62",
+                  "title": "Toegang tot documenten faalt door netwerkproblemen",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Denial of service",
+                  "description": "oegang tot documenten faalt door netwerkproblemen",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 15,
+                  "score": ""
                 }
-              ]
+              ],
+              "threatFrequency": {
+                "tampering": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 2
+              }
             },
             "labels": [
               "Opent bedrijfsdocument"
@@ -597,8 +661,16 @@
             },
             "vertices": [
               {
+                "x": 630,
+                "y": 370
+              },
+              {
                 "x": 645,
                 "y": 410
+              },
+              {
+                "x": 645,
+                "y": 430
               }
             ]
           },
@@ -776,6 +848,80 @@
             "shape": "flow",
             "attrs": {
               "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Login token naar werknemer",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "5604f90e-8127-4b8b-9772-4888356017c5",
+                  "title": "Een aanvaller onderschept en wijzigt bestanden onderweg.",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "Een aanvaller onderschept en wijzigt bestanden onderweg.\n\n",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 14,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 1,
+                "informationDisclosure": 0,
+                "denialOfService": 0
+              }
+            },
+            "labels": [
+              "Login token naar werknemer"
+            ],
+            "id": "5dd5647b-3b17-461f-9091-c8c65369f8ae",
+            "source": {
+              "cell": "322e59cb-5331-4005-9b9c-934d5f3de401",
+              "port": "f1687196-8546-4816-b50b-b96c45c91c33"
+            },
+            "target": {
+              "cell": "7be0a234-d287-41de-a53e-09c941b324e0",
+              "port": "28a30857-8832-4a97-93b5-f3f5e7eea4b5"
+            },
+            "vertices": [
+              {
+                "x": 330,
+                "y": 270
+              },
+              {
+                "x": 450,
+                "y": 270
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
                 "stroke": "#333333",
                 "targetMarker": {
                   "name": "block"
@@ -823,60 +969,6 @@
             ]
           },
           {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "Login token naar werknemer",
-              "description": "",
-              "outOfScope": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": []
-            },
-            "labels": [
-              "Login token naar werknemer"
-            ],
-            "id": "5dd5647b-3b17-461f-9091-c8c65369f8ae",
-            "source": {
-              "cell": "322e59cb-5331-4005-9b9c-934d5f3de401",
-              "port": "f1687196-8546-4816-b50b-b96c45c91c33"
-            },
-            "target": {
-              "cell": "7be0a234-d287-41de-a53e-09c941b324e0",
-              "port": "28a30857-8832-4a97-93b5-f3f5e7eea4b5"
-            },
-            "vertices": [
-              {
-                "x": 330,
-                "y": 270
-              },
-              {
-                "x": 450,
-                "y": 270
-              }
-            ]
-          },
-          {
             "position": {
               "x": 490,
               "y": 470
@@ -890,16 +982,19 @@
                 "text": "Documentopslag (Onedrive/Sharepoint)"
               },
               "topLine": {
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               },
               "bottomLine": {
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
             "visible": true,
             "shape": "store",
+            "zIndex": 12,
             "ports": {
               "groups": {
                 "top": {
@@ -983,20 +1078,52 @@
               ]
             },
             "id": "d1da9320-ae43-4c03-90a6-14670e8969c0",
-            "zIndex": 12,
             "data": {
               "type": "tm.Store",
               "name": "Documentopslag (Onedrive/Sharepoint)",
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "isALog": false,
               "isEncrypted": false,
               "isSigned": false,
               "storesCredentials": false,
               "storesInventory": false,
-              "threats": []
+              "threats": [
+                {
+                  "id": "a8a15ac1-79c5-4789-be36-cf05c20c4178",
+                  "title": "Treinwifi blokkeert toegang tot documenten",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Denial of service",
+                  "description": "Treinwifi blokkeert toegang tot documenten",
+                  "mitigation": "Detect fake or compromised accounts, ensure information is accessible only with authentication and authorisation",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 12,
+                  "score": ""
+                },
+                {
+                  "id": "cfdf4129-f2ad-4ec6-b811-ef89389589de",
+                  "title": "Werknemer krijgt toegang tot bestanden van anderen",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Elevation of privilege",
+                  "description": "Onjuiste toegangsrechten zorgen voor datalekken.",
+                  "mitigation": "Detect fake or compromised accounts, ensure information is accessible only with authentication and authorisation",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 16,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 1
+              }
             }
           },
           {
@@ -1013,13 +1140,14 @@
                 "text": "Externe Ontvanger"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
             "visible": true,
             "shape": "actor",
+            "zIndex": 13,
             "ports": {
               "groups": {
                 "top": {
@@ -1103,16 +1231,33 @@
               ]
             },
             "id": "498e35d0-dae3-41c4-8e16-d8c81569e5b4",
-            "zIndex": 13,
             "data": {
               "type": "tm.Actor",
               "name": "Externe Ontvanger",
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "providesAuthentication": false,
-              "threats": []
+              "threats": [
+                {
+                  "id": "9606ec8b-23c8-45c0-8c2d-0d14a1b77e00",
+                  "title": "Aanvaller doet zich voor als ontvanger van mail",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Spoofing",
+                  "description": " Mail met gevoelige data wordt onderschept door een aanvaller",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 11,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 1,
+                "repudiation": 0
+              }
             }
           },
           {
@@ -1129,13 +1274,14 @@
                 "text": "Aanvaller"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
             "visible": true,
             "shape": "actor",
+            "zIndex": 14,
             "ports": {
               "groups": {
                 "top": {
@@ -1219,16 +1365,46 @@
               ]
             },
             "id": "71e451b4-8fb9-4cad-8bcf-5af64af3c1a1",
-            "zIndex": 14,
             "data": {
               "type": "tm.Actor",
-              "name": "Aanvaller",
+              "name": "",
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "providesAuthentication": false,
-              "threats": []
+              "threats": [
+                {
+                  "id": "56312822-6373-4510-94c1-d25b106766fb",
+                  "title": "Aanvaller doet zich voor als wifi-hotspotlable",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Spoofing",
+                  "description": "No suggestions available for this context. Add one manually please",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 5,
+                  "score": ""
+                },
+                {
+                  "id": "76103028-bb7a-4c08-ab6e-25b7667ec85f",
+                  "title": "Aanvaller stelt nep-netwerk beschikbaar",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Spoofing",
+                  "description": "Aanvaller stelt nep-netwerk beschikbaar → werknemer verbindt per ongeluk",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 6,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 2,
+                "repudiation": 0
+              }
             }
           }
         ],
@@ -1237,6 +1413,6 @@
     ],
     "diagramTop": 1,
     "reviewer": "Michael",
-    "threatTop": 4
+    "threatTop": 17
   }
 }
